@@ -9,6 +9,7 @@
   --color-title-secondary: #f4f4fd;
   --color-social-link-footer: #31d0aa;
   --color-icon: #8e8f99;
+  --color-modal: #fcfcfc;
 }
 body {
   background-color: var(--color-site);
@@ -27,11 +28,15 @@ h6 {
   margin-top: 0;
   margin-bottom: 0;
 }
-a{
+a {
   text-decoration: none;
 }
 /* header */
 .header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  width: 100%;
   background-color: var(--color-site);
   border-bottom: 1px solid #e7e9fc;
 }
@@ -73,22 +78,37 @@ ul {
   align-items: flex-start;
   gap: 40px;
   margin-left: 76px;
+  padding: 24px 0;
+  font-weight: 500;
 }
+
 .header-link {
   display: flex;
   align-items: flex-start;
   gap: 40px;
 }
-.nav-header {
+
+.link-in {
+  position: relative;
+  padding: 24px 0 28px 0;
   color: var(--color-brand);
-  text-decoration: none;
-  font-weight: 500;
-  padding: 24px 0;
 }
-.nav-header:hover,
-.nav-header:focus {
+.link-in:hover::after,
+.link-in:focus::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-background);
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  content: "";
+}
+.link-in:hover,
+.link-in:focus {
   color: var(--color-background);
 }
+
 .contact {
   color: var(--color-secondary);
   text-decoration: none;
@@ -400,7 +420,6 @@ img {
   text-decoration: none;
   border: none;
   border-radius: 4px;
-  
 }
 .filter-button:hover,
 .filter-button:focus {
@@ -450,8 +469,26 @@ img {
   border: 1px solid #e7e9fc;
   border-top-width: 0;
   padding: 32px 16px;
+}
 
-  
+.info-image {
+  position: relative;
+  overflow: hidden;
+}
+.info-product {
+  position: absolute;
+  background-color: var(--color-primary);
+  color: var(--color-title-secondary);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transform: translateY(100%);
+  transition: transform 250ms;
+  padding: 40px 32px 0 32px;
+}
+.product:hover .info-product {
+  transform: translateY(0%);
 }
 /* Socials */
 .social-icon {
@@ -483,4 +520,51 @@ img {
 .social-link:hover,
 .social-link:focus {
   background-color: var(--color-background);
+}
+/* Modal */
+.backdrop {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px 0;
+  background-color: rgba(46, 47, 66, 0.4);
+  transition: opacity 500ms, visibility 500ms;
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.modal {
+  position: relative;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  max-width: 408px;
+  max-height: 576px;
+  background-color: var(--color-modal);
+  transition: transform 500ms;
+}
+.backdrop.is-hidden .modal {
+  transform: scale(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: var(--color-modal);
+}
+.close {
+  width: 24px;
+  height: 24px;
 }
