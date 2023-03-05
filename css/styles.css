@@ -93,8 +93,19 @@ ul {
   padding: 24px 0 28px 0;
   color: var(--color-brand);
 }
-.link-in:hover::after,
-.link-in:focus::after {
+
+.contact {
+  color: var(--color-secondary);
+  text-decoration: none;
+  font-style: normal;
+  transition-property: color;
+  transition-duration: 250ms;
+}
+.contact:hover,
+.contact:focus {
+  color: var(--color-background);
+}
+.link-in.current::after {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -102,22 +113,14 @@ ul {
   width: 100%;
   height: 4px;
   border-radius: 2px;
+  transition-property: color;
+  transition-duration: 250ms;
   content: "";
 }
-.link-in:hover,
-.link-in:focus {
+.link-in:hover {
   color: var(--color-background);
 }
 
-.contact {
-  color: var(--color-secondary);
-  text-decoration: none;
-  font-style: normal;
-}
-.contact:hover,
-.contact:focus {
-  color: var(--color-background);
-}
 .fon-container {
   max-width: 1470px;
   width: 100%;
@@ -161,6 +164,8 @@ ul {
   font-family: "Roboto", sans-serif;
   border-radius: 4px;
   border: none;
+  transition-property: background-color;
+  transition-duration: 250ms;
 }
 .hero-button:hover,
 .hero-button:focus {
@@ -318,6 +323,8 @@ img {
   border: 1px solid #8e8f99;
   width: 100%;
   height: 100%;
+  transition-property: border, fill;
+  transition-duration: 250ms;
 }
 .customers-link:hover,
 .customers-link:focus {
@@ -395,6 +402,8 @@ img {
   border-radius: 50%;
   width: 100%;
   height: 100%;
+  transition-property: background-color;
+  transition-duration: 250ms;
 }
 .social-link-footer:hover,
 .social-link-footer:focus {
@@ -420,6 +429,8 @@ img {
   text-decoration: none;
   border: none;
   border-radius: 4px;
+  transition-property: color, background-color, box-shadow;
+  transition-duration: 250ms;
 }
 .filter-button:hover,
 .filter-button:focus {
@@ -446,6 +457,8 @@ img {
 }
 .app-product {
   flex-basis: calc((100% - 48px) / 3);
+  transition-property: box-shadow;
+  transition-duration: 250ms;
 }
 .app-product:hover,
 .app-product:focus {
@@ -489,6 +502,7 @@ img {
 }
 .product:hover .info-product {
   transform: translateY(0%);
+  opacity: 0.9;
 }
 /* Socials */
 .social-icon {
@@ -516,6 +530,8 @@ img {
   border-radius: 50%;
   width: 100%;
   height: 100%;
+  transition-property: background-color;
+  transition-duration: 250ms;
 }
 .social-link:hover,
 .social-link:focus {
